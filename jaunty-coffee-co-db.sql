@@ -35,6 +35,24 @@ VALUES
   (333, 'Beavis', 'Darlington', '2021-11-11 12:12:00', 'Barista', 5)
 ;
 
+CREATE TABLE SUPPLIER (
+  supplier_id int PRIMARY KEY,
+  company_name varchar(30),
+  country varchar(30),
+  sales_contact_name varchar(60),
+  email varchar(50)
+);
+
+INSERT INTO SUPPLIER
+  (supplier_id, company_name, country, sales_contact_name, email)
+VALUES
+  (1, 'Global Beans', 'USA', 'Richard Richley', 'rrichley@gbeans.com'),
+  (2, 'Jamaica Coffee Co', 'Jamaica', 'Bob Buxton', 'bobbux@jccompany.com'),
+  (3, 'Coffee Exchange LLC', 'USA', 'Brittney Smith', 'bsmith@coffeex.com'),
+  (4, 'Coffee Source', 'Costa Rica', 'Jade Green', 'jgreen@coffeesrc.com'),
+  (5, 'Bean Shippers', 'Ecuador', 'Robert Stanley', 'roberts@beanshippers.com')
+;
+
 CREATE TABLE COFFEE (
   coffee_id int PRIMARY KEY,
   shop_id int,
@@ -55,20 +73,10 @@ VALUES
   (01, 5, 1, 'blue mountain', 7.75)
 ;
 
-CREATE TABLE SUPPLIER (
-  supplier_id int PRIMARY KEY,
-  company_name varchar(30),
-  country varchar(30),
-  sales_contact_name varchar(60),
-  email varchar(50)
-);
+CREATE VIEW employee_view AS 
+SELECT employee_id, CONCAT(first_name, ' ', last_name) as 'employee_full_name', 
+hire_date, job_title, shop_id
+FROM EMPLOYEE;
 
-INSERT INTO SUPPLIER
-  (supplier_id, company_name, country, sales_contact_name, email)
-VALUES
-  (1, 'Global Beans', 'USA', 'Richard Richley', 'rrichley@gbeans.com'),
-  (2, 'Jamaica Coffee Co', 'Jamaica', 'Bob Buxton', 'bobbux@jccompany.com'),
-  (3, 'Coffee Exchange LLC', 'USA', 'Brittney Smith', 'bsmith@coffeex.com'),
-  (4, 'Coffee Source', 'Costa Rica', 'Jade Green', 'jgreen@coffeesrc.com'),
-  (5, 'Bean Shippers', 'Ecuador', 'Robert Stanley', 'roberts@beanshippers.com')
-;
+CREATE INDEX coffee_index
+ON COFFEE (coffee_name);
