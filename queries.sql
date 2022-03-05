@@ -1,1 +1,5 @@
 
+SELECT * FROM COFFEE_SHOP
+WHERE state=’UT’;
+
+SELECT * FROM employeeview
